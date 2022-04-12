@@ -1,0 +1,116 @@
+{% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+{% block content %}
+<div class="container-fluid" style="margin-top:5%;">
+    <div class="container-fluid">
+        <!DOCTYPE html>
+        <html class="no-js" lang="en">
+
+        <body class="home" data-debug="0">
+
+            <section id="content">
+                <div class="content-view">
+                    <div class="box-site-head js-single-element" data-model="{&quot;likes&quot;:55,&quot;id&quot;:38186,&quot;images&quot;:{&quot;thumbnail&quot;:&quot;submissions\/2019\/10\/5da42f4e8967d075754281.jpg&quot;},&quot;slug&quot;:&quot;laguta-laguta&quot;,&quot;title&quot;:&quot;Laguta &amp; Laguta&quot;,&quot;createdAt&quot;:1571616000,&quot;tags&quot;:[&quot;Design Agencies&quot;,&quot;Mobile &amp; Apps&quot;,&quot;Web &amp; Interactive&quot;,&quot;Flat Design&quot;,&quot;Minimal&quot;,&quot;Portfolio&quot;,&quot;Responsive Design&quot;,&quot;Black&quot;,&quot;Red&quot;,&quot;White&quot;,&quot;Gallery&quot;,&quot;GSAP Animation&quot;,&quot;UI design&quot;,&quot;Nuxt.js&quot;],&quot;type&quot;:&quot;submission&quot;}">
+                        <div class="box-bg has-tablet">
+                            <a href="">
+                                <img src="static/images/DelaniStudio.png" width="100%">
+                            </a>
+                        </div>
+                        <div class="box-content over" class="me" style="color: black;">
+                            <a href="" class="site-link" aria-label=""></a>
+                            <div class="inner vertical-center">
+                                <div class="box-info">
+                                    <div class="row mx-auto D-block">
+                                        <h2 class="heading-large">
+                                            <a href="" style="margin-top:-100px;color: black;"></a>
+                                        </h2>
+                                    </div>
+                                    <div class="row mx-auto D-block text-center" style="margin-top: 0.1rem;">
+                                        <div class="by">By <strong><a href="">{{ user.username }}</a>
+                                    </strong> from <strong>{{ user.profile.location }}</strong>
+                                        </div>
+                                        <div class="project_review text-center">
+                                            <div class="parent">
+                                                <strong>
+                                                <h4><a href="{% url 'single_project' 'Delani Studio' %}"><a class="btn btn-md btn-outline-info" href="{% url 'single_project' 'Delani Studio' %}">Trending Site on:</a></h4>  
+                                            </strong>
+                                            </div>
+                                            <div class="visit">
+                                                <a href="https://kiptoorugut.github.io/Delani-Studio/" data-identifier="" data-type="submission" class="btn btn-sm btn-outline-success" target="_blank" rel="noopener nofollow" style="align-items: center;align-self: center;">Visit
+                                                Site</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="container" style="text-align: center;">
+                <h2 class="mt-4" style="color: aliceblue;"><strong>Review/Rating Highlights on Posted Projects,</strong></h2>
+                <h4 style="color: aliceblue;">Please provide your Reviews/Ratings</h4>
+                {% if user.is_authenticated %}
+                <div class="modal fade bd-example-modal-xl" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Upload a project</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" method="post" class="uniForm" enctype="multipart/form-data">
+                                    {% csrf_token %} {{ form|crispy }}
+                                    <input type="submit" class="btn btn-sm btn-info" value="Save" />
+                                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="color: aliceblue;"><em>View posted projects</em></h2>
+                {% endif %}
+                <div class="row">
+                    {% if posts %}
+                    <div class="templates display">
+                        <div class="mb-4" style="display: flex">
+                            {% for post in posts %}
+                            <div class="card" style="width: 18rem;margin: 1rem;">
+                                <div class="view overlay">
+                                    <img class="card-img-top" src="{{ post.photo }}" alt="{{photo.title}}">
+                                    <a href="{% url 'single_project' post.title %}">
+                                        <div class="mask rgba-white-slight "></div>
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title "><a href="{% url 'single_project' post.title %}">{{post.title|title}}</a> <a class="btn btn-sm btn-outline-info" href="{{ post.url }}"> View</a></h4>
+                                    <hr>
+                                    <p class="card-text "><img src="{{post.user.profile.profile_picture.url}} " class="nav-img mr-2 " alt=" " height="50px " width="50px "> By {{post.user.username|title}} <span style="float:right ">{{post.date|date}}</span></p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                {% endif %}
+            </div>
+    </div>
+</div>
+
+
+{% endblock %}
+</body>
+
+</html>
