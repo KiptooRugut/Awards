@@ -4,16 +4,16 @@
 
 ## Screenshot
 ### Landing page
-![home page](https://user-images.githubusercontent.com/488.png)
+![home page](https://github.com/KiptooRugut/Awards/blob/master/static/images/homepage.png)
 
-### Profile
-![profile](https://user-images.githubusercontent.com/489.png)
+### Project Upload
+![project upload](https://github.com/KiptooRugut/Awards/blob/master/static/images/projectupload.png)
 
 ### Reviews
-![reviews](https://user-images.githubusercontent.com/490.png)
+![reviews](https://github.com/KiptooRugut/Awards/blob/master/static/images/reviews.png)
 
 ### Search results
-![search](https://user-images.githubusercontent.com/491.png)
+![search](https://github.com/KiptooRugut/Awards/blob/master/static/images/search.png)
 
 
 ## Description
