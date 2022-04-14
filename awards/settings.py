@@ -70,11 +70,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'awardsapp',
-    'pyuploadcare.dj',
     'bootstrap4',
     'crispy_forms',
-    'rest_framework'
+    'rest_framework',
+    'cloudinary_storage',
+    'cloudinary',
 ]
+
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -106,16 +108,23 @@ TEMPLATES = [
     },
 ]
 
-UPLOADCARE = {
-    'pub_key': config,
-    'secret': config,
-    'UPLOADCARE_PUBLIC_KEY' : config,
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MEDIA_URL = '/media/'  # or any prefix you choose
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('API_KEY'),
+    'API_SECRET':config('API_SECRET')
 }
 
 WSGI_APPLICATION = 'awards.wsgi.application'
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
+LOGOUT_REDIRECT_URL = 'awards'
+LOGOUT_URL = 'logout'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

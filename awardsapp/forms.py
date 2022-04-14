@@ -2,7 +2,6 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Post, Profile, Review
-from pyuploadcare.dj.forms import ImageField
 
 
 class SignupForm(UserCreationForm):
@@ -26,11 +25,9 @@ class UpdateUserProfileForm(forms.ModelForm):
         fields = ['name', 'location', 'profile_picture', 'bio', 'contact']
 
 class PostForm(forms.ModelForm):
-    photo = ImageField(label='')
-
     class Meta:
         model = Post
-        fields = ('photo', 'title', 'url', 'description', 'technologies',)
+        fields = ['photo', 'title', 'url', 'description', 'technologies']
 
 class RatingsForm(forms.ModelForm):
     class Meta:
