@@ -108,7 +108,8 @@ TEMPLATES = [
 
 UPLOADCARE = {
     'pub_key': config,
-    'secret': config
+    'secret': config,
+    'UPLOADCARE_PUBLIC_KEY' : config,
 }
 
 WSGI_APPLICATION = 'awards.wsgi.application'
