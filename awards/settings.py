@@ -114,9 +114,9 @@ MEDIA_URL = '/media/'  # or any prefix you choose
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUD_NAME'),
-    'API_KEY': config('API_KEY'),
-    'API_SECRET':config('API_SECRET')
+    'CLOUD_NAME': 'dkowjad86',
+    'API_KEY': '371575937469716',
+    'API_SECRET': 'yKzn_zeDHnqje8d2iJkg8xusZb8'
 }
 
 WSGI_APPLICATION = 'awards.wsgi.application'
